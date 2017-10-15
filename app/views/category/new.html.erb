@@ -1,5 +1,4 @@
 <h1>Category#new</h1>
-<p>Find me in app/views/category/new.html.erb</p>
 <%= form_for (@category),:url => { :action => :create }   do |f| %> 
 <!-- Mensajes de error -->
 <% if @category.errors.any? %>
@@ -17,7 +16,7 @@
    <p> 
       <%= f.label :title, "Título" %>
       <br />
-      <%= f.text_field :title  %>
+      <%= f.cktext_area :title  %>
    </p>
    <p> 
          <%= f.submit "Enviar" %> 
@@ -26,7 +25,7 @@
 
 <p>Listando Content</p>
 <% @categories.each do |i| %>
-<p>Title : <%= i.title %></p>
+<p>Title : <%= raw i.title %></p>
 |<%= link_to "show " , new_category_theme_path(i.id)  %>
 |<%= link_to "Edit", edit_category_path(i.id) %>
 |<%= link_to "Eliminar" , { :action => :destroy, :id => (i.id) }, :method => :delete  %>
