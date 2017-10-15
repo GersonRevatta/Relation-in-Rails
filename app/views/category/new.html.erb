@@ -1,4 +1,5 @@
 <h1>Category#new</h1>
+<h1> <%= link_to 'Category', new_category_path %> > </h1>
 <%= form_for (@category),:url => { :action => :create }   do |f| %> 
 <!-- Mensajes de error -->
 <% if @category.errors.any? %>
@@ -25,7 +26,7 @@
 
 <p>Listando Content</p>
 <% @categories.each do |i| %>
-<p>Title : <%= raw i.title %></p>
+<p>Title : <%= i.title %></p>
 |<%= link_to "show " , new_category_theme_path(i.id)  %>
 |<%= link_to "Edit", edit_category_path(i.id) %>
 |<%= link_to "Eliminar" , { :action => :destroy, :id => (i.id) }, :method => :delete  %>

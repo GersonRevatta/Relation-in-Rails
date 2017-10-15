@@ -25,7 +25,7 @@
    <p> 
       <%= f.label :content, "Contenido" %>
       <br />
-      <%= f.text_field :content  %>
+      <%= f.cktext_area  :content  %>
    </p>
    <p> 
          <%= f.submit "Enviar" %> 
@@ -37,7 +37,7 @@
   <p>Themes</p>
   <% @themes.each do |item| %>
   <p>Title: <%= item.title %></p>
-  <p>Content: <%=  item.content %></p>
+  <p>Content: <%= raw item.content %></p>
   |<%= link_to "show", new_category_theme_comment_path( item.category_id, :theme_id =>  item.id )%>
   |<%= link_to "edit", edit_category_theme_path(item.category_id , item.id) %>
   |<%= link_to "Eliminar" , { :action => :destroy, :id => (item.id) }, :method => :delete  %>

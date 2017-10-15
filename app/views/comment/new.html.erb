@@ -31,7 +31,7 @@
    <p> 
       <%= f.label :content, "Contenido" %>
       <br />
-      <%= f.text_field :content  %>
+      <%= f.cktext_area :content  %>
    </p>
    <p> 
       <%= f.submit "Enviar" %> 
@@ -41,7 +41,7 @@
 <h3>Listando los comentarios de este tema</h3>
 <% @comments.each do |i|%>
 <p><%= i.title %></p>
-<p><%= i.content %></p>
+<p><%= raw i.content %></p>
 <p><%= @theme.category_id %></p>    
 |show
 |<%= link_to 'edit', edit_category_theme_comment_path( i.theme_id , @theme.category_id , i.id )%>
