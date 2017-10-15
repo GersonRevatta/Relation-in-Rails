@@ -1,0 +1,49 @@
+<h1>Comment#new</h1>
+<p>Find me in app/views/comment/new.html.erb</p>
+<p>especificando el tema </p>
+<%= @theme.title %>
+<p>
+  
+<%= @theme.content %>
+</p>
+
+<center>  
+<p>Add a comment</p>
+<%= form_for ([@theme,@comment]),:url => { :action => :create }   do |f| %> 
+<!-- Mensajes de error -->
+<% if @comment.errors.any? %>
+    <div id="errorExplanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited
+        this post from being saved:</h2>
+      <ul>
+        <% @comment.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+       <% end %>
+      </ul>
+    </div>
+  <% end %>
+<!-- Campos -->
+   <p> 
+      <%= f.label :title, "Título" %>
+      <br />
+      <%= f.text_field :title  %>
+   </p>
+   <p> 
+      <%= f.label :content, "Contenido" %>
+      <br />
+      <%= f.text_field :content  %>
+   </p>
+   <p> 
+      <%= f.submit "Enviar" %> 
+   </p>
+<%end %>
+</center>
+<h3>Listando los comentarios de este tema</h3>
+<% @comments.each do |i|%>
+<p><%= i.title %></p>
+<p><%= i.content %></p>
+<p><%= @theme.category_id %></p>    
+|show
+|<%= link_to 'edit', edit_category_theme_comment_path( i.theme_id , @theme.category_id , i.id )%>
+|delete
+<%end%>

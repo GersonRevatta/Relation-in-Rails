@@ -1,0 +1,15 @@
+<h1>Category#edit</h1>
+<p>Find me in app/views/category/edit.html.erb</p>
+
+<%= form_for @category , :url => { :action => :update   }  , :method => :put do |f| %>
+
+<!-- Campos -->
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title , { :value => @category.title } %>
+  </p>
+  
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

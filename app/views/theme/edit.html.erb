@@ -1,0 +1,20 @@
+<h1>Theme#edit</h1>
+<p>Find me in app/views/theme/edit.html.erb</p>
+<%= form_for @theme , :url => { :action => :update }  , :method => :put do |f| %>
+  <!-- Mensajes de error -->
+
+<!-- Campos -->
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title , { :value => @theme.title } %>
+  </p>
+    <p>
+    <%= f.label :content %><br>
+    <%= f.text_field :content , { :value => @theme.content } %>
+  </p>
+  
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+

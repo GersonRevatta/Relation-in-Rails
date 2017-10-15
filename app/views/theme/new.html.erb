@@ -1,0 +1,45 @@
+<p>Category  <%= @category.title %> </p>
+
+
+<p>Add theme for category</p>
+<%= form_for ([@category,@theme]),:url => { :action => :create }   do |f| %> 
+<!-- Mensajes de error -->
+<% if @theme.errors.any? %>
+    <div id="errorExplanation">
+      <h2><%= pluralize(@theme.errors.count, "error") %> prohibited
+        this post from being saved:</h2>
+      <ul>
+        <% @theme.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+       <% end %>
+      </ul>
+    </div>
+  <% end %>
+<!-- Campos -->
+   <p> 
+      <%= f.label :title, "Título" %>
+      <br />
+      <%= f.text_field :title  %>
+   </p>
+   <p> 
+      <%= f.label :content, "Contenido" %>
+      <br />
+      <%= f.text_field :content  %>
+   </p>
+   <p> 
+         <%= f.submit "Enviar" %> 
+   </p>
+<%end %>
+
+
+<center>
+  <p>Themes</p>
+  <% @themes.each do |item| %>
+  <p>Title: <%= item.title %></p>
+  <p>Content: <%= item.content %></p>
+  |<%= link_to "show", new_category_theme_comment_path( item.category_id, :theme_id =>  item.id )%>
+  |<%= link_to "edit", edit_category_theme_path(item.category_id , item.id) %>
+  |<%= link_to "Eliminar" , { :action => :destroy, :id => (item.id) }, :method => :delete  %>
+  <% end %>
+  
+</center>
